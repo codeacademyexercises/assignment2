@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "Chirag_Ramachandraiah",
+    "password": null,
+    "database": "library",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "Chirag_Ramachandraiah",
+    "password": null,
+    "database": "librarytest",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "Chirag_Ramachandraiah",
+    "password": null,
+    "database": "libraryprod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
