@@ -7,7 +7,13 @@ let data = '';
 const dataGroupedByAuthor = {};
 count = 0;
 
-const showAllBooks = (request, h) => dataGroupedByAuthor;
+const showAllBooks = (request, h) => {
+  const ordered = {};
+  Object.keys(dataGroupedByAuthor).sort().forEach((key) => {
+    ordered[key] = dataGroupedByAuthor[key];
+  });
+  return ordered;
+};
 
 const init = async () => {
   await server.start();
@@ -54,4 +60,10 @@ const display = (response) => {
   });
 };
 
+// const fetchBooks = (url, callback) => {
+//   https.get(url, callback);
+//   while(count!==)
+// };
 https.get('https://5gj1qvkc5h.execute-api.us-east-1.amazonaws.com/dev/allBooks', display);
+
+// module.exports = { fetchBooks, dataGroupedByAuthor };
