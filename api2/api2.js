@@ -19,3 +19,5 @@ process.on('SIGINT', () => {
     process.exit((err) ? 1 : 0);
   });
 });
+
+module.exports = server;
