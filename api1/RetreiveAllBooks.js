@@ -1,11 +1,9 @@
-const hapi = require('hapi');
 const https = require('https');
-const route1 = require('./route1.js');
 const server = require('./api1.js');
 
 let data = '';
 const dataGroupedByAuthor = {};
-count = 0;
+let count = 0;
 
 const showAllBooks = (request, h) => {
   const ordered = {};
@@ -44,7 +42,6 @@ const display = (response) => {
             dataGroupedByAuthor[element.Author].push(element);
           }
           if (count === length) {
-            // console.log(dataGroupedByAuthor);
             server.route({
               method: 'GET',
               path: '/allBooks',
@@ -60,10 +57,9 @@ const display = (response) => {
   });
 };
 
-// const fetchBooks = (url, callback) => {
-//   https.get(url, callback);
-//   while(count!==)
-// };
-https.get('https://5gj1qvkc5h.execute-api.us-east-1.amazonaws.com/dev/allBooks', display);
+const fetchBooks = (url, callback) => {
+  https.get(url, callback);
+};
+fetchBooks('https://5gj1qvkc5h.execute-api.us-east-1.amazonaws.com/dev/allBooks', display);
 
-// module.exports = { fetchBooks, dataGroupedByAuthor };
+module.exports = { display, fetchBooks };
