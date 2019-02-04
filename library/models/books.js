@@ -1,8 +1,5 @@
-
-
 module.exports = (sequelize, DataTypes) => {
   const books = sequelize.define('books', {
-    id: DataTypes.INTEGER,
     Name: DataTypes.STRING,
     Author: DataTypes.STRING,
     rating: DataTypes.FLOAT,
@@ -13,22 +10,32 @@ module.exports = (sequelize, DataTypes) => {
   // };
 
   books.insert = async (id, name, author, rating, like) => {
-    if (books.findall({
+    if (!await books.findAll({
       where: {
         id,
       },
-    }) !== {}) {
+    })) {
       return 'Duplicate!!';
     }
-    books.create({
+    return await books.create({
       id, Name: name, Author: author, rating, like,
     });
   };
 
-  books.like = async (loveit, id) => books.update({ like: loveit }, {
+  books.countOfAllRecords = async () => await books.count();
+
+  books.like = async id => await books.update({ like: 1 }, {
     where: {
       id,
     },
+    returning: true,
+  });
+
+  books.dislike = async id => await books.update({ like: 0 }, {
+    where: {
+      id,
+    },
+    returning: true,
   });
 
   return books;

@@ -1,2 +1,5 @@
 /node_modules
 /package-lock.json
+/library/node_modules
+/library/package-lock.json
+/api1/rough.js
